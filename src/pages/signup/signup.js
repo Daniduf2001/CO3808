@@ -1,6 +1,6 @@
 import './signup.css'
 
-function SignUp() {
+function Signup() {
     return (<div>
         <div className="container-fluid px-5 pt-5 loginDiv">
             <div className="row">
@@ -78,4 +78,4 @@ function SignUp() {
     </div>);
 }
 
-export default SignUp;
+export default Signup;
