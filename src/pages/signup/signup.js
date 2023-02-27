@@ -1,8 +1,9 @@
 import './signup.css'
+import {Link} from "react-router-dom";
 
 function Signup() {
     return (<div>
-        <div className="container-fluid px-5 pt-5 loginDiv">
+        <div className="container-fluid px-5 pt-5 signUpDiv">
             <div className="row">
                 <div className="col-lg-6">
                     <div className="col-12 mb-3">
@@ -14,7 +15,7 @@ function Signup() {
                     </div>
                     <div className="col-12">
                         <h6 className="d-inline-block">Already Registered? &nbsp;</h6>
-                        <a className="d-inline-block" href="#"> Login </a>
+                        <Link className="d-inline-block" to="/"> Login </Link>
                     </div>
                     <div className="col-12 col-sm-12 col-md-6 col-lg-12 pl-0">
                         <div className="col-12 mt-3">
@@ -29,7 +30,7 @@ function Signup() {
                         <div className="col-12 col-lg-12 col-md-12 col-sm-12">
                             <div className="row signContentDiv pb-5">
                                 <div className="col-12 col-sm-12 col-md-6 col-lg-9">
-                                    <div className="signInDiv col-lg-12 m-auto">
+                                    <div className="signUpMainDiv col-lg-12 m-auto">
                                         <div className="text-center mb-2 pt-4">
                                             <h1>Sign In</h1>
                                         </div>
@@ -60,7 +61,7 @@ function Signup() {
                                                     <div
                                                         className="col-12 d-flex flex-column justify-content-center align-items-center">
                                                         <button type="submit"
-                                                                className="btn text-white col-6 btnLogin mb-2">Sign Up
+                                                                className="btn text-white col-6 btnSignup mt-2">Sign Up
                                                         </button>
                                                     </div>
                                                 </div>

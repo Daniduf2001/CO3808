@@ -2,6 +2,8 @@
     position: absolute;
     background-color: #182052;
     color: #ffffff;
+    top: 0;
+    bottom: 0;
 }
 
 .signInDiv {
