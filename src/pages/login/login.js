@@ -49,18 +49,18 @@ function Login() {
                                 </div>
                                 <div className="px-4 pb-5">
                                     <form action="">
-                                        <div className="form-group">
-                                            <label htmlFor="email">Email</label>
+                                        <div className="form-group mt-3 mb-3">
+                                            <label className="mb-2" htmlFor="email">Email</label>
                                             <input type="email" className="form-control" id="email"
                                                    placeholder="Enter email"/>
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="password">Password</label>
+                                        <div className="form-group mt-3 mb-3">
+                                            <label className="mb-2" htmlFor="password">Password</label>
                                             <input type="password" className="form-control" id="password"
                                                    placeholder="Password"/>
                                         </div>
-                                        <div className="form-group form-check pl-0 ml-0">
-                                            <label className="form-check-label" htmlFor="forgot">Forgot
+                                        <div className="form-group form-check px-0 ml-0">
+                                            <label className="form-check-label mb-2" htmlFor="forgot">Forgot
                                                 Password? Click</label>&nbsp;&nbsp;
                                             <a id="forgot" href="#">here</a>
                                         </div>
@@ -70,7 +70,7 @@ function Login() {
                                             <div
                                                 className="col-12 d-flex flex-column justify-content-center align-items-center">
                                                 <button type="submit"
-                                                        className="btn text-white col-5 btnLogin mb-2">Submit
+                                                        className="btn text-white col-5 btnLogin mt-2 mb-2">Submit
                                                 </button>
 
                                                 <p className="mb-1">OR</p>
