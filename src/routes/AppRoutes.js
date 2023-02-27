@@ -9,9 +9,9 @@ const AppRoutes = () => {
         <div>
             <Router>
                 <Switch>
-                    <Route path="/" render={(props) => <Login/>}/>;
-                    <Route path="/signup" render={(props) => <Signup/>}/>;
-                    <Route path="/reset" render={(props) => <Reset/>}/>;
+                    <Route exact path="/" render={(props) => <Login/>}/>;
+                    <Route exact path="/signup" render={(props) => <Signup/>}/>;
+                    <Route exact path="/reset" render={(props) => <Reset/>}/>;
                 </Switch>
             </Router>
         </div>

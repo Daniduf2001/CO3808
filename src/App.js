@@ -3,7 +3,9 @@ import './App.css'
 
 function App() {
     return (
-        <AppRoutes/>
+        <div>
+            <AppRoutes/>
+        </div>
     );
 }
 

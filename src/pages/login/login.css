@@ -37,3 +37,8 @@
     border-radius: 20px;
     background-color: #ffffff;
 }
+
+label{
+    text-transform: capitalize;
+    font-weight: bold;
+}
