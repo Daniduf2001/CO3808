@@ -1,5 +1,8 @@
 import './signup.css'
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {saveUser} from "../../store/actions/user.action";
 
 function Signup() {
     return (
@@ -82,4 +85,16 @@ function Signup() {
         </div>);
 }
 
-export default Signup;
+
+const mapStateToProps = (state) => {
+    return {
+        user: Object.values(state.userReducer.users),
+    }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({saveUser}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
