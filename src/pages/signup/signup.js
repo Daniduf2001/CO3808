@@ -1,10 +1,20 @@
 import './signup.css'
 import {Link} from "react-router-dom";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {bindActionCreators} from "redux";
-import {saveUser} from "../../store/actions/user.action";
+import {actionCreator} from "../../store/actions";
+import {useEffect} from "react";
 
 function Signup() {
+    const dispatch = useDispatch();
+    const users = useSelector((state) => state.userReducer.users.data);
+    const {getUser, saveUser,} = bindActionCreators(actionCreator, dispatch);
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
+
     return (
         <div>
             <div className="container-fluid px-5 pt-5 signUpDiv">
@@ -43,23 +53,27 @@ function Signup() {
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="name">Name</label>
                                                         <input type="text" className="form-control" id="name"
-                                                               placeholder="Name"/>
+                                                               placeholder="Name"
+                                                               value={users[0].UserName}
+                                                        />
                                                     </div>
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="email">Email</label>
                                                         <input type="email" className="form-control" id="email"
-                                                               placeholder="Enter email"/>
+                                                               placeholder="Enter email" value={users[0].UserEmail}/>
                                                     </div>
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="password">Password</label>
                                                         <input type="password" className="form-control" id="password"
-                                                               placeholder="Password"/>
+                                                               placeholder="Password" value={users[0].Password}/>
                                                     </div>
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="dOb">Date of birth</label>
                                                         <input type="text" className="form-control" id="dOb"
                                                                placeholder="Date of Birth"
-                                                               onFocus={(e) => e.target.type = 'date'}/>
+                                                               onFocus={(e) => e.target.type = 'date'}
+                                                               value={users[0].DOB}
+                                                        />
                                                     </div>
                                                     <div
                                                         className="mt-3 mb-3 form-group form-check d-flex justify-content-center align-items-center">
@@ -85,16 +99,4 @@ function Signup() {
         </div>);
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        user: Object.values(state.userReducer.users),
-    }
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({saveUser}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default Signup;

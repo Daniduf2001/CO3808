@@ -1,4 +1,4 @@
-import {ADD_USER} from '../actions/actionType';
+import {ADD_USER, GET_USER} from '../actions/actionType';
 
 const initialState = {
     users: [],
@@ -15,6 +15,11 @@ export default function userReducer(state = initialState, action) {
                 ...state,
                 users: [...state.users, action.payload.data],
                 loading: false
+            }
+        case GET_USER:
+            return {
+               ...state,
+                users: action.payload.data,
             }
         default:
             return state;
