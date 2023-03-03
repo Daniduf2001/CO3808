@@ -1,8 +1,21 @@
 import './login.css'
 import backGroundSmallImage from '../../assets/images/Capture.png';
 import {Link} from "react-router-dom";
+import {GoogleLogin} from 'react-google-login';
+
+const clientID = "790749371562-klboqah1p5gvj9fr937ohf6hfqtamhtg.apps.googleusercontent.com";
 
 function Login() {
+
+    const onSuccess = (res) => {
+        console.log("Login success! current user: ", res.profileObj);
+    }
+
+    const onFailure = (res) => {
+        console.log("Login Failed! current user: ", res);
+    }
+
+
     return (
         <div className="row text-white px-0 m-0 loginDiv">
             <div className="col-lg-6">
@@ -69,10 +82,14 @@ function Login() {
 
                                     <p className="mb-1">OR</p>
 
-                                    <div
-                                        className="btnGoogle text-center text-dark d-flex
-                                                        justify-content-center align-items-center mt-2">
-                                        <i className="fa-brands fa-google" aria-hidden="true"></i>
+                                    <div>
+                                        <GoogleLogin
+                                            clientId={clientID}
+                                            cookiePolicy={'single_host_origin'}
+                                            isSignedIn={true}
+                                            onSuccess={onSuccess}
+                                            onFailure={onFailure}
+                                        />
                                     </div>
 
                                     <p className="mt-2">Sign in with Google</p>
