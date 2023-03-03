@@ -1,18 +1,34 @@
 import './signup.css'
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {bindActionCreators} from "redux";
 import {actionCreator} from "../../store/actions";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 function Signup() {
     const dispatch = useDispatch();
-    const users = useSelector((state) => state.userReducer.users.data);
-    const {getUser, saveUser,} = bindActionCreators(actionCreator, dispatch);
+    const [user, setUser] = useState({});
+    const [UserName, setUserName] = useState("");
+    const [UserEmail, setUserEmail] = useState("");
+    const [Password, setPassword] = useState("");
+    const [DOB, setDOB] = useState("");
+    // const users = useSelector((state) => state.userReducer.users.data);
+    const {saveUser,} = bindActionCreators(actionCreator, dispatch);
 
     useEffect(() => {
-        getUser();
     }, []);
+
+    const signUp = (e) => {
+        e.preventDefault();
+        const newUser = {
+            UserName: UserName,
+            UserEmail: UserEmail,
+            Password: Password,
+            DOB: DOB
+        }
+
+        saveUser(newUser)
+    }
 
 
     return (
@@ -49,30 +65,38 @@ function Signup() {
                                                 <h1 className="fw-bold">Sign Up</h1>
                                             </div>
                                             <div className="px-4 pb-5">
-                                                <form action="">
+                                                <form onSubmit={signUp}>
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="name">Name</label>
                                                         <input type="text" className="form-control" id="name"
                                                                placeholder="Name"
-                                                               value={users[0].UserName}
+                                                               onChange={(e) => {
+                                                                   setUserName(e.target.value)
+                                                               }}
                                                         />
                                                     </div>
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="email">Email</label>
                                                         <input type="email" className="form-control" id="email"
-                                                               placeholder="Enter email" value={users[0].UserEmail}/>
+                                                               placeholder="Enter email" onChange={(e) => {
+                                                            setUserEmail(e.target.value)
+                                                        }}/>
                                                     </div>
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="password">Password</label>
                                                         <input type="password" className="form-control" id="password"
-                                                               placeholder="Password" value={users[0].Password}/>
+                                                               placeholder="Password" onChange={(e) => {
+                                                            setPassword(e.target.value)
+                                                        }}/>
                                                     </div>
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="dOb">Date of birth</label>
                                                         <input type="text" className="form-control" id="dOb"
                                                                placeholder="Date of Birth"
                                                                onFocus={(e) => e.target.type = 'date'}
-                                                               value={users[0].DOB}
+                                                               onChange={(e) => {
+                                                                   setDOB(e.target.value)
+                                                               }}
                                                         />
                                                     </div>
                                                     <div
