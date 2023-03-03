@@ -4,50 +4,86 @@ import {Link} from "react-router-dom";
 
 function Login() {
     return (
-        <div className="container-fluid loginDiv">
-            <div className="container">
-                <div className="col-lg-12 col-sm-12 col-md-12">
-                    <h5 className="fw-bold mt-4">LearnNow</h5>
-                </div>
-                <div className="col-lg-12 col-sm-12 col-md-12">
-                    <h1 className="mt-5 fw-bold">Welcome to LearnNow</h1>
-                </div>
-                <div className="col-lg-12 col-sm-12 col-md-12">
-                    <h6 className="mt-5 fw-bold">Sign in to continue</h6>
-                </div>
-                <div className="row">
-                    <div className="col-lg-6 col-md-12 col-sm-12  d-flex justify-content-end">
+        <div className="row text-white px-0 m-0 loginDiv">
+            <div className="col-lg-6">
+                <div className="col-lg-12 mt-5 ps-5 pt-3">
+                    <h4 className="fw-bold">LearnNow</h4>
+                    <h2 className="fw-bold">Welcome to LearnNow</h2>
+                    <h6 className="fw-bold">Sign in to continue</h6>
+                    <div className="col-lg-12 col-md-12 col-sm-12  d-flex justify-content-end">
                         <img
                             src={backGroundSmallImage}
                             alt="" height="200"/>
                     </div>
-                    <div className="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-end">
-                        <img
-                            src={backGroundSmallImage}
-                            alt="" height="200"/>
+                    <div className="col-lg-12 col-sm-12 col-md-12 pl-0 mt-3">
+                        <p>
+                            Learning mode more convenient, faster and better
+                        </p>
                     </div>
-                </div>
-                <div className="col-lg-12 col-sm-12 col-md-12 pl-0 mt-3">
-                    <p>
-                        Learning mode more convenient, faster and better
-                    </p>
-                </div>
-                <div className="lineBrake pl-0 mt-3"/>
-                <div className="col-12 col-sm-12 col-md-12 col-lg-7 mt-3  pl-0 text-justify">
-                    <p>
-                        Learn Now is a learning platform that helps you learn more effectively and
-                        efficiently.
-                    </p>
-                </div>
-                <div className="col-12 pl-0">
-                    <p className="mb-0">
-                        Are you a new user?Click <Link className="text-white"
-                                                       to="/signup">here</Link> to
-                        register
-                    </p>
+                    <div className="lineBrake pl-0 mt-3"/>
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-7 mt-3  pl-0 text-justify">
+                        <p>
+                            Learn Now is a learning platform that helps you learn more effectively and
+                            efficiently.
+                        </p>
+                    </div>
+                    <div className="col-12 pl-0">
+                        <p className="mb-0">
+                            Are you a new user?Click <Link className="text-white"
+                                                           to="/signup">here</Link> to
+                            register
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>);
+            <div className="col-lg-6">
+                <div className="d-flex flex-column justify-content-center align-items-center signInSDiv">
+                    <div className="text-center mb-2 pt-4">
+                        <h1>Sign In</h1>
+                    </div>
+                    <div className="px-4 pb-5">
+                        <form action="">
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <input type="email" className="form-control" id="email"
+                                       placeholder="Enter email"/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input type="password" className="form-control" id="password"
+                                       placeholder="Password"/>
+                            </div>
+                            <div className="form-group form-check pl-0 ml-0">
+                                <label className="form-check-label" htmlFor="forgot">Forgot
+                                    Password? Click</label>&nbsp;&nbsp;
+                                <a id="forgot" href="#">here</a>
+                            </div>
+
+                            <div
+                                className="form-group form-check d-flex justify-content-center align-items-center">
+                                <div
+                                    className="col-12 d-flex flex-column justify-content-center align-items-center">
+                                    <button type="submit"
+                                            className="btn text-white col-5 btnLogin mb-2">Submit
+                                    </button>
+
+                                    <p className="mb-1">OR</p>
+
+                                    <div
+                                        className="btnGoogle text-center text-dark d-flex
+                                                        justify-content-center align-items-center mt-2">
+                                        <i className="fa-brands fa-google" aria-hidden="true"></i>
+                                    </div>
+
+                                    <p className="mt-2">Sign in with Google</p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default Login;

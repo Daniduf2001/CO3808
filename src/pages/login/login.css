@@ -4,11 +4,22 @@
     color: #ffffff;
     top: 0;
     bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
-.signInDiv {
-    border-radius: 20px;
+.signInSDiv {
+    width: 60%;
+    height: 80%;
+    border-radius: 30px;
     background-color: #464D75;
+    position: relative;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 .form-control[type="email"] {
@@ -31,14 +42,14 @@
     border-radius: 100%;
 }
 
-.lineBrake{
+.lineBrake {
     width: 50px;
     height: 5px;
     border-radius: 20px;
     background-color: #ffffff;
 }
 
-label{
+label {
     text-transform: capitalize;
     font-weight: bold;
 }
