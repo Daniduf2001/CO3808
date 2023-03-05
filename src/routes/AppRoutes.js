@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 // import Reset from '../pages/resetPassword/resetPassword'
 // import Welcome from '../pages/welcome/welcome'
 import StudentRegister from "../pages/student/register/studentRegister";
+import TeacherRegister from "../pages/teacher/register/teacherRegister";
 
 const AppRoutes = () => {
     return (
@@ -16,6 +17,7 @@ const AppRoutes = () => {
                     {/*<Route exact path="/reset" render={(props) => <Reset/>}/>;*/}
                     {/*<Route exact path="/welcome" render={(props) => <Welcome/>}/>;*/}
                     <Route exact path="/student" render={(props) => <StudentRegister/>}/>;
+                    <Route exact path="/teacher" render={(props) => <TeacherRegister/>}/>;
                 </Switch>
             </Router>
         </div>

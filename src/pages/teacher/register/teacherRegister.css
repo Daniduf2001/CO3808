@@ -1,0 +1,21 @@
+.circleDiv {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+}
+
+.teacherFormDiv {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #182052;
+}
+
+.btn-student-register {
+    background-color: white;
+    color: #000000;
+    font-weight: bold;
+}
