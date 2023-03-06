@@ -6,40 +6,40 @@
     bottom: 0;
 }
 
-.signUpMainDiv {
+.signUpDiv .signUpMainDiv {
     border-radius: 20px;
     background-color: #464D75;
 }
 
-.form-control[type="email"] {
+.signUpDiv input[type="email"] {
     border-radius: 20px;
 }
 
-.form-control[type="password"] {
+.signUpDiv input[type="password"] {
     border-radius: 20px;
 }
 
-.form-control[type="date"] {
+.signUpDiv input[type="date"] {
     border-radius: 20px;
 }
 
-.form-control[type="text"] {
+.signUpDiv input[type="text"] {
     border-radius: 20px;
 }
 
-.btnSignup{
+.signUpDiv .btnSignup {
     background-color: orangered;
     border-radius: 20px;
 }
 
-.btnGoogle {
+.signUpDiv .btnGoogle {
     width: 50px;
     height: 50px;
     background-color: #ffffff;
     border-radius: 100%;
 }
 
-label{
+.signUpDiv label {
     text-transform: capitalize;
     font-weight: bold;
 }

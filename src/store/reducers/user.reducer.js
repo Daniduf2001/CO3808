@@ -2,7 +2,12 @@ import {ADD_USER, GET_USER} from '../actions/actionType';
 
 const initialState = {
     users: [],
-    user: {},
+    user: {
+        UserName: "",
+        UserEmail: "",
+        Password: "",
+        DOB: ""
+    },
     error: null,
     loading: false,
 };
@@ -14,7 +19,7 @@ export default function userReducer(state = initialState, action) {
             return {
                 ...state,
                 users: [...state.users, action.payload.data],
-                loading: false
+                loading: false,
             }
         case GET_USER:
             return {

@@ -1,33 +1,48 @@
 import './signup.css'
-import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {Link, useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 import {bindActionCreators} from "redux";
 import {actionCreator} from "../../store/actions";
-import {useEffect, useState} from "react";
+import VueSweetalert2 from "sweetalert2";
 
 function Signup() {
+    const user = useSelector((state) => state.userReducer.user);
     const dispatch = useDispatch();
-    const [user, setUser] = useState({});
-    const [UserName, setUserName] = useState("");
-    const [UserEmail, setUserEmail] = useState("");
-    const [Password, setPassword] = useState("");
-    const [DOB, setDOB] = useState("");
-    // const users = useSelector((state) => state.userReducer.users.data);
+    const navigation = useNavigate();
     const {saveUser,} = bindActionCreators(actionCreator, dispatch);
-
-    useEffect(() => {
-    }, []);
 
     const signUp = (e) => {
         e.preventDefault();
         const newUser = {
-            UserName: UserName,
-            UserEmail: UserEmail,
-            Password: Password,
-            DOB: DOB
+            UserName: user.UserName,
+            UserEmail: user.UserEmail,
+            Password: user.Password,
+            DOB: user.DOB
         }
-
-        saveUser(newUser)
+        saveUser(newUser).then((res) => {
+            if (res.payload.status === 200) {
+                VueSweetalert2.fire({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    icon: 'success',
+                    title: res.payload.data.message
+                });
+                setTimeout(() => {
+                    navigation("/welcome", {state: {user: res.payload.data.data}});
+                }, 2000);
+            }
+        }).catch((err) => {
+            VueSweetalert2.fire({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                icon: 'error',
+                title: err.response.data.message
+            });
+        });
     }
 
 
@@ -71,7 +86,7 @@ function Signup() {
                                                         <input type="text" className="form-control" id="name"
                                                                placeholder="Name"
                                                                onChange={(e) => {
-                                                                   setUserName(e.target.value)
+                                                                   user.UserName = e.target.value
                                                                }}
                                                         />
                                                     </div>
@@ -79,14 +94,14 @@ function Signup() {
                                                         <label className="mb-2" htmlFor="email">Email</label>
                                                         <input type="email" className="form-control" id="email"
                                                                placeholder="Enter email" onChange={(e) => {
-                                                            setUserEmail(e.target.value)
+                                                            user.UserEmail = e.target.value
                                                         }}/>
                                                     </div>
                                                     <div className="form-group mt-3 mb-3">
                                                         <label className="mb-2" htmlFor="password">Password</label>
                                                         <input type="password" className="form-control" id="password"
                                                                placeholder="Password" onChange={(e) => {
-                                                            setPassword(e.target.value)
+                                                            user.Password = e.target.value
                                                         }}/>
                                                     </div>
                                                     <div className="form-group mt-3 mb-3">
@@ -95,7 +110,7 @@ function Signup() {
                                                                placeholder="Date of Birth"
                                                                onFocus={(e) => e.target.type = 'date'}
                                                                onChange={(e) => {
-                                                                   setDOB(e.target.value)
+                                                                   user.DOB = e.target.value
                                                                }}
                                                         />
                                                     </div>

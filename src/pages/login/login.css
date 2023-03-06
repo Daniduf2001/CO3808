@@ -9,7 +9,7 @@
     margin: auto;
 }
 
-.signInSDiv {
+.loginDiv .signInSDiv {
     width: 60%;
     height: 80%;
     border-radius: 30px;
@@ -22,34 +22,34 @@
     margin: auto;
 }
 
-.form-control[type="email"] {
+.loginDiv input[type="email"] {
     border-radius: 20px;
 }
 
-.form-control[type="password"] {
+.loginDiv input[type="password"] {
     border-radius: 20px;
 }
 
-.btnLogin {
+.loginDiv .btnLogin {
     background-color: orangered;
     border-radius: 20px;
 }
 
-.btnGoogle {
+.loginDiv .btnGoogle {
     width: 50px;
     height: 50px;
     background-color: #ffffff;
     border-radius: 100%;
 }
 
-.lineBrake {
+.loginDiv .lineBrake {
     width: 50px;
     height: 5px;
     border-radius: 20px;
     background-color: #ffffff;
 }
 
-label {
+.loginDiv label {
     text-transform: capitalize;
     font-weight: bold;
 }
