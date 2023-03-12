@@ -30,7 +30,7 @@ function Welcome() {
                         <h4> Student</h4>
                     </Link>
 
-                    <Link to="/teacher"
+                    <Link to="/teacher" state={{user: userDetails}}
                           className="col-4 text-white text-decoration-none d-flex flex-column justify-content-around align-items-center">
                         <div className="col-4 avtarSqDiv mb-4">
 

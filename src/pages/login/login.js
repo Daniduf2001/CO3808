@@ -69,7 +69,7 @@ function Login() {
                             <div className="form-group form-check pl-0 ml-0">
                                 <label className="form-check-label" htmlFor="forgot">Forgot
                                     Password? Click</label>&nbsp;&nbsp;
-                                <a id="forgot" href="#">here</a>
+                                <Link id="forgot" to="/reset">here</Link>
                             </div>
 
                             <div

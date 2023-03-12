@@ -11,7 +11,6 @@ import VueSweetalert2 from "sweetalert2";
 const StudentRegister = () => {
     const dispatch = useDispatch();
     const {addStudent} = bindActionCreators(actionCreator, dispatch);
-    const users = useSelector((state) => state.userReducer.users);
     const student = useSelector((state) => state.studentReducer.student);
     let location = useLocation();
     const registeredUser = location.state.user;
