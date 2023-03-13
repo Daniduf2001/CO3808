@@ -14,19 +14,19 @@ const initialState = {
 
 // user reducer
 export default function userReducer(state = initialState, action) {
-    switch (action.type) {
-        case ADD_USER:
+    switch (action.type) {//check action types
+        case ADD_USER://check type of user add action
             return {
-                ...state,
-                users: [...state.users, action.payload.data],
-                loading: false,
+                ...state,//return current state
+                users: [...state.users, action.payload.data],//return users
+                loading: false,//set loading to false
             }
-        case GET_USER:
+        case GET_USER://check type of user get action
             return {
-               ...state,
-                users: action.payload.data,
+               ...state,//return current state
+                users: action.payload.data,//return users
             }
-        default:
-            return state;
+        default://default return state
+            return state;//return current state
     }
 }

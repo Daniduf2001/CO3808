@@ -8,18 +8,18 @@ import {actionCreator} from "../../../store/actions";
 import VueSweetalert2 from "sweetalert2";
 
 
-const StudentRegister = () => {
-    const dispatch = useDispatch();
-    const {addStudent} = bindActionCreators(actionCreator, dispatch);
-    const student = useSelector((state) => state.studentReducer.student);
-    let location = useLocation();
+const StudentRegister = () => {}
+    const dispatch = useDispatch();//create teacher register function
+    const {addStudent} = bindActionCreators(actionCreator, dispatch);//bind action creator
+    const student = useSelector((state) => state.studentReducer.student);//get student from student reducer
+    let location = useLocation();//get location
     const registeredUser = location.state.user;
     student.StudentEmailAddress = registeredUser.UserEmail
     student.StudentName = registeredUser.UserName
 
-    const studentRegister = (e) => {
-        e.preventDefault();
-        const newStudent = {
+    const studentRegister = (e) => {//create student register function
+        e.preventDefault();//prevent default action
+        const newStudent = {//create new student object
             UserID: registeredUser._id,
             StudentName: student.StudentName,
             StudentMobile: student.StudentMobile,
@@ -27,9 +27,9 @@ const StudentRegister = () => {
             EducationalInstitute: student.EducationalInstitute,
         }
 
-        if (!(newStudent.UserID === undefined)) {
-            addStudent(newStudent).then((res) => {
-                if (res.payload.status === 200) {
+        if (!(newStudent.UserID === undefined)) {//check if user id is not undefined
+            addStudent(newStudent).then((res) => {//add student and return response
+                if (res.payload.status === 200) {//check return status is 200
                     VueSweetalert2.fire({
                         toast: true,
                         position: 'top-end',
@@ -60,7 +60,6 @@ const StudentRegister = () => {
                 icon: 'error',
                 title: "Please Register as a User First"
             });
-        }
     }
 
     const clearTextFields = () => {

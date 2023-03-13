@@ -8,15 +8,15 @@ import {actionCreator} from "../../../store/actions";
 import {useLocation} from "react-router-dom";
 
 function TeacherRegister() {
-    const dispatch = useDispatch();
-    const {addTeacher} = bindActionCreators(actionCreator, dispatch);
-    let location = useLocation();
-    const registeredUser = location.state.user;
-    const teacher = useSelector((state) => state.teacherReducer.teacher);
+    const dispatch = useDispatch();C
+    const {addTeacher} = bindActionCreators(actionCreator, dispatch);//bind action creator
+    let location = useLocation();//get location
+    const registeredUser = location.state.user;//get user from location state
+    const teacher = useSelector((state) => state.teacherReducer.teacher);//get teacher from teacher reducer
 
-    const teacherRegister = (e) => {
-        e.preventDefault();
-        const newTeacher = {
+    const teacherRegister = (e) => {//create teacher register function
+        e.preventDefault();//prevent default action
+        const newTeacher = {//create new teacher object
             UserID: registeredUser._id,
             TeacherName: teacher.TeacherName,
             TeacherMobile: teacher.TeacherMobile,
@@ -24,9 +24,9 @@ function TeacherRegister() {
             FieldOfExpertise: teacher.FieldOfExpertise,
         }
 
-        if (!(newTeacher.UserID === undefined)) {
-            addTeacher(newTeacher).then((res) => {
-                if (res.payload.status === 200) {
+        if (!(newTeacher.UserID === undefined)) {//check if user id is not undefined
+            addTeacher(newTeacher).then((res) => {//add teacher and return response
+                if (res.payload.status === 200) {//check return status is 200
                     VueSweetalert2.fire({
                         toast: true,
                         position: 'top-end',
