@@ -57,17 +57,17 @@ function Login() {
                     <div className="px-4 pb-5">
                         <form action="">
                             <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input type="email" className="form-control" id="email"
+                                <label htmlFor="email" className="mb-2">Email</label>
+                                <input type="email" className="form-control mt-3" id="email"
                                        placeholder="Enter email"/>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
-                                <input type="password" className="form-control" id="password"
+                                <label htmlFor="password" className="mb-2 mt-2">Password</label>
+                                <input type="password" className="form-control mt-1" id="password"
                                        placeholder="Password"/>
                             </div>
                             <div className="form-group form-check pl-0 ml-0">
-                                <label className="form-check-label" htmlFor="forgot">Forgot
+                                <label className="form-check-label mb-2 mt-2" htmlFor="forgot">Forgot
                                     Password? Click</label>&nbsp;&nbsp;
                                 <Link id="forgot" to="/reset">here</Link>
                             </div>
@@ -91,8 +91,6 @@ function Login() {
                                             onFailure={onFailure}
                                         />
                                     </div>
-
-                                    <p className="mt-2">Sign in with Google</p>
                                 </div>
                             </div>
                         </form>

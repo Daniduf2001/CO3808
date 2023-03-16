@@ -1,5 +1,5 @@
 import './signup.css'
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useHistory, useLocation} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {bindActionCreators} from "redux";
 import {actionCreator} from "../../store/actions";
@@ -8,7 +8,9 @@ import VueSweetalert2 from "sweetalert2";
 function Signup() {
     const user = useSelector((state) => state.userReducer.user);
     const dispatch = useDispatch();
-    const navigation = useNavigate();
+    const navigation = useLocation();
+    const history = useHistory();
+    console.log(navigation)
     const {saveUser,} = bindActionCreators(actionCreator, dispatch);
 
     const signUp = (e) => {
@@ -30,7 +32,7 @@ function Signup() {
                     title: res.payload.data.message
                 });
                 setTimeout(() => {
-                    navigation("/welcome", {state: {user: res.payload.data.data}});
+                    history.push("/welcome", {state: {user: res.payload.data.data}});
                 }, 2000);
             }
         }).catch((err) => {

@@ -1,9 +1,11 @@
 import './welcome.css'
 import {Link, useLocation} from "react-router-dom";
+import studentImage from "../../assets/images/student.png";
+import teacherImage from "../../assets/images/teacher.png";
 
 function Welcome() {
     let location = useLocation();
-    const userDetails = location.state.user;
+    const userDetails = location.state.state.user;
     return (
         <div className="h-100 welcomeMainDiv">
             <div className="container-fluid px-5 pt-5 welcomeDiv h-100">
@@ -22,18 +24,24 @@ function Welcome() {
                 </div>
 
                 <div className="row mt-5 d-flex justify-content-around align-items-center">
-                    <Link to="/student" state={{user: userDetails}}
+                    <Link to={{
+                        pathname: "/student",
+                        state: {user: userDetails}
+                    }}
                           className="col-4 text-white text-decoration-none d-flex flex-column justify-content-around align-items-center">
                         <div className="col-4 avtarSqDiv mb-4">
-
+                            <img src={studentImage} alt="studnet icon"/>
                         </div>
                         <h4> Student</h4>
                     </Link>
 
-                    <Link to="/teacher" state={{user: userDetails}}
+                    <Link to={{
+                        pathname: "/teacher",
+                        state: {user: userDetails}
+                    }}
                           className="col-4 text-white text-decoration-none d-flex flex-column justify-content-around align-items-center">
                         <div className="col-4 avtarSqDiv mb-4">
-
+                            <img src={teacherImage} alt="teacher icon"/>
                         </div>
                         <h4> teacher</h4>
                     </Link>

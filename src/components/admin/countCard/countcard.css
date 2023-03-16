@@ -1,0 +1,13 @@
+.countCard {
+    width: 226px;
+    background: #FFFFFF;
+    border-radius: 15px;
+    border: none;
+    z-index: -10;
+    font-weight: bold;
+    color: #182052;
+}
+
+.count-Icon {
+    font-size: 45px;
+}
