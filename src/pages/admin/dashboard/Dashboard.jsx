@@ -1,6 +1,7 @@
-import React from 'react';
-import './dashboard.css'
+import React from "react";
+import './dashboard.css';
 import CountCard from "../../../components/admin/countCard/CountCard";
+import Chart from "../../../components/admin/chart/Chart";
 
 const Dashboard = () => {
     return (
@@ -16,7 +17,7 @@ const Dashboard = () => {
             <div className="item">
                 <div className="row d-flex justify-content-between align-items-center">
                     <div className="col-lg-5 col-md-6 col-sm-12">
-                   
+                        <Chart/>
                     </div>
                     <div className="col-lg-5 col-md-6 col-sm-12">
 
@@ -34,4 +35,5 @@ const Dashboard = () => {
         </div>
     );
 };
+
 export default Dashboard;

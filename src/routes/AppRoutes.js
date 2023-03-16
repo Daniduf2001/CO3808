@@ -23,17 +23,22 @@ const AppRoutes = () => {
                     <Route path="/welcome" render={(props) => <Welcome/>}/>;
                     <Route path="/teacher" render={(props) => <TeacherRegister/>}/>;
                     <Route path="/student" render={(props) => <StudentRegister/>}/>;
-                    <Route path='/admin/:path?' exact>
+                    <Route path='/teacherAdmin/:path?' exact>
                         <AdminLayout class="wrapper">
                             <Header/>
                             <Sidebar/>
                             <Switch>
-                                <Route path="/admin" render={(props) => <Dashboard/>} exact/>;
-                                {/*<Route path="/admin/package" render={(props) => <Package/>}/>;*/}
-                                {/*<Route path="/admin/client" render={(props) => <Client/>}/>;*/}
-                                {/*<Route path="/admin/ride" render={(props) => <Ride/>}/>;*/}
-                                {/*<Route path="/admin/career" render={(props) => <Career/>}/>;*/}
-                                {/*<Route path="/admin/careerlist" render={(props) => <CareerList/>}/>;*/}
+                                <Route path="/dashboard" render={(props) => <Dashboard/>} exact/>;
+                            </Switch>
+                        </AdminLayout>
+                    </Route>
+
+                    <Route path='/studentAdmin/:path?' exact>
+                        <AdminLayout class="wrapper">
+                            <Header/>
+                            <Sidebar/>
+                            <Switch>
+                                <Route path="/dashboard" render={(props) => <Dashboard/>} exact/>;
                             </Switch>
                         </AdminLayout>
                     </Route>

@@ -1,5 +1,5 @@
 import React from "react";
-import './countcard.css';
+import './CountCard.css';
 
 const CountCard = (props) => {
     return (
