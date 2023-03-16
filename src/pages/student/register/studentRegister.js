@@ -8,7 +8,7 @@ import {actionCreator} from "../../../store/actions";
 import VueSweetalert2 from "sweetalert2";
 
 
-const StudentRegister = () => {}
+const StudentRegister = () => {
     const dispatch = useDispatch();//create teacher register function
     const {addStudent} = bindActionCreators(actionCreator, dispatch);//bind action creator
     const student = useSelector((state) => state.studentReducer.student);//get student from student reducer
@@ -17,7 +17,7 @@ const StudentRegister = () => {}
     student.StudentEmailAddress = registeredUser.UserEmail
     student.StudentName = registeredUser.UserName
 
-    const studentRegister = (e) => {//create student register function
+    const studentRegisterFunc = (e) => {//create student register function
         e.preventDefault();//prevent default action
         const newStudent = {//create new student object
             UserID: registeredUser._id,
@@ -60,6 +60,7 @@ const StudentRegister = () => {}
                 icon: 'error',
                 title: "Please Register as a User First"
             });
+        }
     }
 
     const clearTextFields = () => {
@@ -85,7 +86,7 @@ const StudentRegister = () => {}
                         <div className="col-lg-8 text-white">
                             <h2 className="fw-bold text-center">Student Registration</h2>
                             <h5 className="text-center mb-3">Fill in your student details below</h5>
-                            <form onSubmit={studentRegister} id="studentForm">
+                            <form onSubmit={studentRegisterFunc} id="studentForm">
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label text-uppercase">Name</label>
                                     <input type="text" className="form-control" id="name"
@@ -128,5 +129,6 @@ const StudentRegister = () => {}
         </div>
     );
 }
+
 
 export default StudentRegister;

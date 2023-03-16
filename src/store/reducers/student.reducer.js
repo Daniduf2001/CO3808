@@ -16,7 +16,7 @@ const initialState = {
 };
 
 // user reducer
-export default function userReducer(state = initialState, action) {
+export default function studentReducer(state = initialState, action) {
     switch (action.type) {//check action types
         case ADD_STUDENT://check type of student add action
             return {//return current state

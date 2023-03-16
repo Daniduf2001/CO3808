@@ -8,15 +8,15 @@ import {actionCreator} from "../../../store/actions";
 import {useLocation} from "react-router-dom";
 
 function TeacherRegister() {
-    const dispatch = useDispatch();C
+    const dispatch = useDispatch();
     const {addTeacher} = bindActionCreators(actionCreator, dispatch);//bind action creator
     let location = useLocation();//get location
     const registeredUser = location.state.user;//get user from location state
     const teacher = useSelector((state) => state.teacherReducer.teacher);//get teacher from teacher reducer
 
-    const teacherRegister = (e) => {//create teacher register function
-        e.preventDefault();//prevent default action
-        const newTeacher = {//create new teacher object
+    const teacherRegister = (e) => { //create teacher register function
+        e.preventDefault(); //prevent default action
+        const newTeacher = { //create new teacher object
             UserID: registeredUser._id,
             TeacherName: teacher.TeacherName,
             TeacherMobile: teacher.TeacherMobile,
