@@ -1,0 +1,9 @@
+.cardDiv {
+    height: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dragging {
+    background: #006203;
+}

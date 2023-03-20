@@ -1,13 +1,15 @@
 import './login.css'
 import backGroundSmallImage from '../../assets/images/Capture.png';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {GoogleLogin} from 'react-google-login';
 
 const clientID = "790749371562-klboqah1p5gvj9fr937ohf6hfqtamhtg.apps.googleusercontent.com";
 
 function Login() {
 
+    const history = useHistory();
     const onSuccess = (res) => {
+        history.push("/teacherAdmin");
         console.log("Login success! current user: ", res.profileObj);
     }
 

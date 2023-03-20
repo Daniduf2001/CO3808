@@ -10,6 +10,7 @@ import Dashboard from "../pages/admin/dashboard/dashboard";
 import Header from "../components/admin/common/header/Header";
 import Sidebar from "../components/admin/common/sidebar/Sidebar";
 import AdminLayout from "../layout/adminLayout";
+import Module from "../pages/admin/module/Module";
 
 
 const AppRoutes = () => {
@@ -17,18 +18,19 @@ const AppRoutes = () => {
         <div>
             <Router>
                 <Switch>
-                    <Route path="/login" render={(props) => <Login/>}/>;
-                    <Route path="/signup" render={(props) => <Signup/>}/>;
-                    <Route path="/reset" render={(props) => <Reset/>}/>;
-                    <Route path="/welcome" render={(props) => <Welcome/>}/>;
-                    <Route path="/teacher" render={(props) => <TeacherRegister/>}/>;
-                    <Route path="/student" render={(props) => <StudentRegister/>}/>;
+                    <Route exact path="/" render={(props) => <Login/>}/>;
+                    <Route exact path="/signup" render={(props) => <Signup/>}/>;
+                    <Route exact path="/reset" render={(props) => <Reset/>}/>;
+                    <Route exact path="/welcome" render={(props) => <Welcome/>}/>;
+                    <Route exact path="/teacher" render={(props) => <TeacherRegister/>}/>;
+                    <Route exact path="/student" render={(props) => <StudentRegister/>}/>;
                     <Route path='/teacherAdmin/:path?' exact>
                         <AdminLayout class="wrapper">
                             <Header/>
                             <Sidebar/>
                             <Switch>
-                                <Route path="/dashboard" render={(props) => <Dashboard/>} exact/>;
+                                <Route path="/teacherAdmin" render={(props) => <Dashboard/>} exact/>;
+                                <Route path="/teacherAdmin/module" render={(props) => <Module/>} exact/>;
                             </Switch>
                         </AdminLayout>
                     </Route>
@@ -38,7 +40,6 @@ const AppRoutes = () => {
                             <Header/>
                             <Sidebar/>
                             <Switch>
-                                <Route path="/dashboard" render={(props) => <Dashboard/>} exact/>;
                             </Switch>
                         </AdminLayout>
                     </Route>
