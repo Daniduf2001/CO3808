@@ -11,6 +11,7 @@ import Header from "../components/admin/common/header/Header";
 import Sidebar from "../components/admin/common/sidebar/Sidebar";
 import AdminLayout from "../layout/adminLayout";
 import Module from "../pages/admin/module/Module";
+import Assignment from "../pages/admin/assinment/Assignment";
 
 
 const AppRoutes = () => {
@@ -31,6 +32,7 @@ const AppRoutes = () => {
                             <Switch>
                                 <Route path="/teacherAdmin" render={(props) => <Dashboard/>} exact/>;
                                 <Route path="/teacherAdmin/module" render={(props) => <Module/>} exact/>;
+                                <Route path="/teacherAdmin/assignment" render={(props) => <Assignment/>} exact/>;
                             </Switch>
                         </AdminLayout>
                     </Route>
