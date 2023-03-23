@@ -13,11 +13,11 @@ const Sidebar = () => {
                 <span className="icon"><i className="fa-solid fa-book" aria-hidden="true"></i></span>
                 <span className="title">Module materials</span>
             </Link></li>
-            <li><Link to="/admin/client">
+            <li><Link to="/teacherAdmin/assignment">
                 <span className="icon"><i className="fa-solid fa-pen-to-square"></i></span>
                 <span className="title">Assignment</span>
             </Link></li>
-            <li><Link to="/admin/ride">
+            <li><Link to="/teacherAdmin/timeTable">
                 <span className="icon"><i className="fa-solid fa-calendar-days"></i></span>
                 <span className="title">Class time table</span>
             </Link></li>

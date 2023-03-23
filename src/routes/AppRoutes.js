@@ -12,6 +12,7 @@ import Sidebar from "../components/admin/common/sidebar/Sidebar";
 import AdminLayout from "../layout/adminLayout";
 import Module from "../pages/admin/module/Module";
 import Assignment from "../pages/admin/assinment/Assignment";
+import TimeTable from "../pages/admin/timeTable/TimeTable";
 
 
 const AppRoutes = () => {
@@ -33,6 +34,7 @@ const AppRoutes = () => {
                                 <Route path="/teacherAdmin" render={(props) => <Dashboard/>} exact/>;
                                 <Route path="/teacherAdmin/module" render={(props) => <Module/>} exact/>;
                                 <Route path="/teacherAdmin/assignment" render={(props) => <Assignment/>} exact/>;
+                                <Route path="/teacherAdmin/timeTable" render={(props) => <TimeTable/>} exact/>;
                             </Switch>
                         </AdminLayout>
                     </Route>
