@@ -9,6 +9,8 @@ import Welcome from '../pages/welcome/welcome'
 import Dashboard from "../pages/admin/dashboard/dashboard";
 import Header from "../components/admin/common/header/Header";
 import Sidebar from "../components/admin/common/sidebar/Sidebar";
+import StudentHeader from "../components/admin/common/header/Header";
+import TeacherSidebar from "../components/admin/common/sidebar/Sidebar";
 import AdminLayout from "../layout/adminLayout";
 import Module from "../pages/admin/module/Module";
 import Assignment from "../pages/admin/assinment/Assignment";
@@ -41,9 +43,10 @@ const AppRoutes = () => {
 
                     <Route path='/studentAdmin/:path?' exact>
                         <AdminLayout class="wrapper">
-                            <Header/>
-                            <Sidebar/>
+                            <StudentHeader/>
+                            <TeacherSidebar/>
                             <Switch>
+                                    <Route path="/studentAdmin" render={(props) => <Dashboard/>} exact/>;
                             </Switch>
                         </AdminLayout>
                     </Route>

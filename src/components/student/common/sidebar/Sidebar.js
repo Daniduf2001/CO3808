@@ -11,7 +11,7 @@ const Sidebar = () => {
             </Link></li>
             <li><Link to="/teacherAdmin/module">
                 <span className="icon"><i className="fa-solid fa-book" aria-hidden="true"></i></span>
-                <span className="title">Module</span>
+                <span className="title">Module materials</span>
             </Link></li>
             <li><Link to="/teacherAdmin/assignment">
                 <span className="icon"><i className="fa-solid fa-pen-to-square"></i></span>

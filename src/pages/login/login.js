@@ -2,6 +2,8 @@ import './login.css'
 import backGroundSmallImage from '../../assets/images/Capture.png';
 import {Link, useHistory} from "react-router-dom";
 import {GoogleLogin} from 'react-google-login';
+import axios from "axios";
+import VueSweetalert2 from "sweetalert2";
 
 const clientID = "790749371562-klboqah1p5gvj9fr937ohf6hfqtamhtg.apps.googleusercontent.com";
 
@@ -9,12 +11,45 @@ function Login() {
 
     const history = useHistory();
     const onSuccess = (res) => {
-        history.push("/teacherAdmin");
+        // history.push("/teacherAdmin");
         console.log("Login success! current user: ", res.profileObj);
     }
 
     const onFailure = (res) => {
         console.log("Login Failed! current user: ", res);
+    }
+
+    const checkLogin = (e) => {
+        e.preventDefault();
+        axios.post("http://localhost:8000/api/user/aouth", {
+            UserEmail: e.target.email.value,
+            Password: e.target.password.value
+        }).then((res) => {
+            console.log(res);
+            if (res.status === 200 && res.data.userType === "teacher") {
+                history.push("/teacherAdmin");
+            } else if (res.status === 200 && res.data.userType === "student") {
+                history.push("/studentAdmin");
+            } else {
+                VueSweetalert2.fire({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    icon: 'error',
+                    title: "Something went wrong"
+                });
+            }
+        }).catch((err) => {
+            VueSweetalert2.fire({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                icon: 'error',
+                title: "Something went wrong"
+            });
+        });
     }
 
 
@@ -57,7 +92,7 @@ function Login() {
                         <h1>Sign In</h1>
                     </div>
                     <div className="px-4 pb-5">
-                        <form action="">
+                        <form onSubmit={checkLogin}>
                             <div className="form-group">
                                 <label htmlFor="email" className="mb-2">Email</label>
                                 <input type="email" className="form-control mt-3" id="email"
