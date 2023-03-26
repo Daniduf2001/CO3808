@@ -19,7 +19,11 @@ const Dashboard = () => {
     useEffect(() => {
         const token = new Cookies().get('token');
         UserInfo(token).then((res) => {
-            if (res) setUserInfo(res); else navigate.push('/')
+            if (res) {
+                setUserInfo(res);
+            } else {
+                navigate.push('/')
+            }
         })
     }, [])
 

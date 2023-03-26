@@ -32,8 +32,9 @@ function Login() {
 
         Axios.post(`${URL}/users/login`, {email: inputEmail, password: inputPassword})
             .then(res => {
-                console.log(res.data.token);
+                console.log(res.data.message);
                 if (res.data.message === "Success") {
+                    console.log(res.data.token);
                     const token = new Cookies();
                     token.set('token', res.data.token, {path: '/', maxAge: 604800})
                     //return to home page

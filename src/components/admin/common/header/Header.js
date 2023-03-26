@@ -25,8 +25,9 @@ const Header = () => {
                 <div className="col-5 d-flex justify-content-end">
                     <ul className="mb-0">
                         <li className="mt-1 text-decoration-none">
-                            <p className="d-inline me-2" onClick={logout}><i className="fa fa-sign-out logoutIcon"
-                                                                             aria-hidden="true"/></p>
+                            <p style={{cursor: "pointer"}} className="d-inline me-2" onClick={logout}><i
+                                className="fa fa-sign-out logoutIcon"
+                                aria-hidden="true"/></p>
                             <p className="d-inline ms-2 me-2 fw-bold profileText">Madhusha</p>
                         </li>
                         <li>
