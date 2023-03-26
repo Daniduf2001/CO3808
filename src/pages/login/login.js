@@ -27,9 +27,9 @@ function Login() {
         }).then((res) => {
             console.log(res);
             if (res.status === 200 && res.data.userType === "teacher") {
-                history.push("/teacherAdmin");
+                history.push("/teacherAdmin", {state: {user: res.data.data}});
             } else if (res.status === 200 && res.data.userType === "student") {
-                history.push("/studentAdmin");
+                history.push("/studentAdmin", {state: {user: res.data.data}});
             } else {
                 VueSweetalert2.fire({
                     toast: true,
