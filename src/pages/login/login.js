@@ -1,15 +1,23 @@
+import React, {useState} from "react";
 import './login.css'
 import backGroundSmallImage from '../../assets/images/Capture.png';
 import {Link, useHistory} from "react-router-dom";
-import {GoogleLogin} from 'react-google-login';
-import axios from "axios";
+import Axios from "axios";
+import Cookies from "universal-cookie";
 import VueSweetalert2 from "sweetalert2";
 
 const clientID = "790749371562-klboqah1p5gvj9fr937ohf6hfqtamhtg.apps.googleusercontent.com";
 
+const URL = process.env.REACT_APP_BACKEND_URL;
+
 function Login() {
 
     const history = useHistory();
+
+    const [inputEmail, setInputEmail] = useState('');
+    const [inputPassword, setInputPassword] = useState('');
+    const [error, setError] = useState('');
+
     const onSuccess = (res) => {
         // history.push("/teacherAdmin");
         console.log("Login success! current user: ", res.profileObj);
@@ -21,36 +29,66 @@ function Login() {
 
     const checkLogin = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/api/user/aouth", {
-            UserEmail: e.target.email.value,
-            Password: e.target.password.value
-        }).then((res) => {
-            console.log(res);
-            if (res.status === 200 && res.data.userType === "teacher") {
-                history.push("/teacherAdmin", {state: {user: res.data.data}});
-            } else if (res.status === 200 && res.data.userType === "student") {
-                history.push("/studentAdmin", {state: {user: res.data.data}});
-            } else {
-                VueSweetalert2.fire({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    icon: 'error',
-                    title: "Something went wrong"
-                });
-            }
-        }).catch((err) => {
-            VueSweetalert2.fire({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                icon: 'error',
-                title: "Something went wrong"
-            });
-        });
+
+        Axios.post(`${URL}/users/login`, {email: inputEmail, password: inputPassword})
+            .then(res => {
+                console.log(res.data.token);
+                if (res.data.message === "Success") {
+                    const token = new Cookies();
+                    token.set('token', res.data.token, {path: '/', maxAge: 604800})
+                    //return to home page
+                    history.push("/teacherAdmin");
+                } else {
+                    VueSweetalert2.fire({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        icon: 'error',
+                        title: "Something went wrong"
+                    });
+
+                    setTimeout(() => {
+                        history.push("/");
+                    }, 3000)
+
+                }
+            })
+            .catch(() => setError("Something went wrong. Please try again."))
     }
+
+    // const checkLogin = (e) => {
+    //     e.preventDefault();
+    //     axios.post("http://localhost:8000/api/user/aouth", {
+    //         UserEmail: e.target.email.value,
+    //         Password: e.target.password.value
+    //     }).then((res) => {
+    //         console.log(res);
+    //         if (res.status === 200 && res.data.userType === "teacher") {
+    //             history.push("/teacherAdmin", {state: {user: res.data.data}});
+    //         } else if (res.status === 200 && res.data.userType === "student") {
+    //             history.push("/studentAdmin", {state: {user: res.data.data}});
+    //         } else {
+    //             VueSweetalert2.fire({
+    //                 toast: true,
+    //                 position: 'top-end',
+    //                 showConfirmButton: false,
+    //                 timer: 3000,
+    //                 icon: 'error',
+    //                 title: "Something went wrong"
+    //             });
+    //         }
+    //     }).catch((err) => {
+    //         VueSweetalert2.fire({
+    //             toast: true,
+    //             position: 'top-end',
+    //             showConfirmButton: false,
+    //             timer: 3000,
+    //             icon: 'error',
+    //             title: "Something went wrong"
+    //         });
+    //     });
+    // }
 
 
     return (
@@ -92,16 +130,19 @@ function Login() {
                         <h1>Sign In</h1>
                     </div>
                     <div className="px-4 pb-5">
+                        <h4 className="form-error">{error}</h4>
                         <form onSubmit={checkLogin}>
                             <div className="form-group">
                                 <label htmlFor="email" className="mb-2">Email</label>
                                 <input type="email" className="form-control mt-3" id="email"
-                                       placeholder="Enter email"/>
+                                       placeholder="Enter email" value={inputEmail}
+                                       onChange={({target: {value}}) => setInputEmail(value)}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="password" className="mb-2 mt-2">Password</label>
                                 <input type="password" className="form-control mt-1" id="password"
-                                       placeholder="Password"/>
+                                       placeholder="Password" value={inputPassword}
+                                       onChange={({target: {value}}) => setInputPassword(value)}/>
                             </div>
                             <div className="form-group form-check pl-0 ml-0">
                                 <label className="form-check-label mb-2 mt-2" htmlFor="forgot">Forgot
@@ -119,15 +160,15 @@ function Login() {
 
                                     <p className="mb-1">OR</p>
 
-                                    <div>
-                                        <GoogleLogin
-                                            clientId={clientID}
-                                            cookiePolicy={'single_host_origin'}
-                                            isSignedIn={true}
-                                            onSuccess={onSuccess}
-                                            onFailure={onFailure}
-                                        />
-                                    </div>
+                                    {/*<div>*/}
+                                    {/*    <GoogleLogin*/}
+                                    {/*        clientId={clientID}*/}
+                                    {/*        cookiePolicy={'single_host_origin'}*/}
+                                    {/*        isSignedIn={true}*/}
+                                    {/*        onSuccess={onSuccess}*/}
+                                    {/*        onFailure={onFailure}*/}
+                                    {/*    />*/}
+                                    {/*</div>*/}
                                 </div>
                             </div>
                         </form>
