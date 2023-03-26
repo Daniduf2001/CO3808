@@ -4,10 +4,13 @@ import CountCard from "../../../components/admin/countCard/CountCard";
 import UserInfo from "./../../../helpers/UserInfo";
 import Cookies from "universal-cookie";
 import Axios from "axios";
+import {useHistory} from "react-router-dom";
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 
 const Dashboard = () => {
+
+    const navigate = useHistory();
 
 
     const [userInfo, setUserInfo] = useState('');
@@ -16,7 +19,7 @@ const Dashboard = () => {
     useEffect(() => {
         const token = new Cookies().get('token');
         UserInfo(token).then((res) => {
-            if (res) setUserInfo(res); else window.location = "/teacherAdmin"
+            if (res) setUserInfo(res); else navigate.push('/')
         })
     }, [])
 
@@ -60,7 +63,7 @@ const Dashboard = () => {
 
     const Unenroll = (classId) => {
         Axios.post(`${URL}/class/students/delete`, {token: userInfo.token, _class: classId, student: userInfo._id})
-            .then(() => window.location = "/")
+            .then(() => navigate.push('/'))
     }
 
 
@@ -75,19 +78,24 @@ const Dashboard = () => {
             </div>
             <div className="item">
                 <div className="container-fluid">
-                    <div className="container">
+                    <div className="row">
                         {classes.map(_class => {
                             if (!_class.archived && !userInfo.archived_class.includes(_class._id)) {
-                                return <div className="class box box-shadow" key={_class._id}>
-                                    <div onClick={() => window.location = `/class/${_class._id}`}>
-                                        <h1 className="box-title">{_class.title}</h1>
+                                return <div className="col-3 m-4 card classCard" key={_class._id}>
+                                    <div
+                                        className="card-body text-center d-flex-column justify-content-center align-items-center"
+                                        onClick={() => window.location = `/class/${_class._id}`}
+                                        style={{cursor: "pointer"}}
+                                    >
+                                        <h1 className="box-title fw-bold">{_class.title}</h1>
                                         <p className="box-text class-description">{_class.description}</p>
                                     </div>
-                                    <p className="box-option link"
+                                    <p className="link box-option card-title fw-bold" style={{cursor: "pointer"}}
                                        onClick={() => Archive(_class._id, _class.owner)}>Archive</p>
                                     {_class.students.includes(userInfo._id) ?
-                                        <p className="box-option link" onClick={() => Unenroll(_class._id)}>Unenroll</p>
-                                        : <p className="box-option link"
+                                        <p className="link box-option fw-bold" style={{cursor: "pointer"}}
+                                           onClick={() => Unenroll(_class._id)}>Unenroll</p>
+                                        : <p className="link box-option fw-bold" style={{cursor: "pointer"}}
                                              onClick={() => window.location = `/class/${_class._id}/setting`}>Setting</p>}
                                 </div>
                             } else return null;

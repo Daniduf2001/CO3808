@@ -1,27 +1,62 @@
-.wrapper .main_container{
-    width: (100% - 200px);
+.classCard {
+    background: #FFFFFF;
+    border-radius: 15px;
+    border: none;
+}
+
+.box-title{
+    font-weight: bold;
+    text-align: center;
+    font-family: "Montserrat";
+    padding: 2px 5px;
+    border-bottom: 0.5px solid #e6e6e6;
+}
+
+.box-option{
+    border-top: 1px solid #e4dcdc;
+    padding: 5px 0px;
+    cursor: pointer !important;
+}
+
+.class-description{
+    height: 50px;
+    overflow-y: scroll;
+}
+
+.link {
+    cursor: pointer !important;
+    color: #182052;
+    padding-left: 50px;
+}
+
+.class-Icon {
+    font-size: 45px;
+}
+
+.wrapper .main_container {
+    width: (100% -200px);
     margin-top: 70px;
     margin-left: 200px;
     padding: 15px;
     transition: all 0.3s ease;
 }
 
-.wrapper .main_container .item:nth-child(1){
+.wrapper .main_container .item:nth-child(1) {
     z-index: -10;
     background: none;
     border-radius: 15px;
 }
 
-.wrapper .main_container .item{
+.wrapper .main_container .item {
     border-radius: 15px;
-    background:none;
+    background: none;
     margin-bottom: 10px;
     padding: 15px;
     font-size: 14px;
     line-height: 22px;
 }
 
-.wrapper.collapse .main_container{
-    width: (100% - 70px);
+.wrapper.collapse .main_container {
+    width: (100% -70px);
     margin-left: 70px;
 }
