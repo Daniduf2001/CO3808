@@ -58,39 +58,6 @@ function Login() {
             .catch(() => setError("Something went wrong. Please try again."))
     }
 
-    // const checkLogin = (e) => {
-    //     e.preventDefault();
-    //     axios.post("http://localhost:8000/api/user/aouth", {
-    //         UserEmail: e.target.email.value,
-    //         Password: e.target.password.value
-    //     }).then((res) => {
-    //         console.log(res);
-    //         if (res.status === 200 && res.data.userType === "teacher") {
-    //             history.push("/teacherAdmin", {state: {user: res.data.data}});
-    //         } else if (res.status === 200 && res.data.userType === "student") {
-    //             history.push("/studentAdmin", {state: {user: res.data.data}});
-    //         } else {
-    //             VueSweetalert2.fire({
-    //                 toast: true,
-    //                 position: 'top-end',
-    //                 showConfirmButton: false,
-    //                 timer: 3000,
-    //                 icon: 'error',
-    //                 title: "Something went wrong"
-    //             });
-    //         }
-    //     }).catch((err) => {
-    //         VueSweetalert2.fire({
-    //             toast: true,
-    //             position: 'top-end',
-    //             showConfirmButton: false,
-    //             timer: 3000,
-    //             icon: 'error',
-    //             title: "Something went wrong"
-    //         });
-    //     });
-    // }
-
 
     return (
         <div className="row text-white px-0 m-0 loginDiv">
@@ -158,18 +125,6 @@ function Login() {
                                     <button type="submit"
                                             className="btn text-white col-5 btnLogin mb-2">Submit
                                     </button>
-
-                                    <p className="mb-1">OR</p>
-
-                                    {/*<div>*/}
-                                    {/*    <GoogleLogin*/}
-                                    {/*        clientId={clientID}*/}
-                                    {/*        cookiePolicy={'single_host_origin'}*/}
-                                    {/*        isSignedIn={true}*/}
-                                    {/*        onSuccess={onSuccess}*/}
-                                    {/*        onFailure={onFailure}*/}
-                                    {/*    />*/}
-                                    {/*</div>*/}
                                 </div>
                             </div>
                         </form>

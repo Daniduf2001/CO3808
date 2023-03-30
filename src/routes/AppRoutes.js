@@ -8,13 +8,22 @@ import Reset from '../pages/resetPassword/resetPassword'
 import Welcome from '../pages/welcome/welcome'
 import Dashboard from "../pages/admin/dashboard/dashboard";
 import Header from "../components/admin/common/header/Header";
-import Sidebar from "../components/admin/common/sidebar/Sidebar";
 import StudentHeader from "../components/admin/common/header/Header";
 import StudentSidebar from "../components/admin/common/sidebar/Sidebar";
+import Sidebar from "../components/admin/common/sidebar/Sidebar";
 import AdminLayout from "../layout/adminLayout";
-import Module from "../pages/admin/module/Module";
-import Assignment from "../pages/admin/assinment/Assignment";
-import TimeTable from "../pages/admin/timeTable/TimeTable";
+import ClassPage from "../pages/admin/clssspage/classPage";
+import ClassWork from "../pages/admin/classwork/ClassWork";
+import Material from "../components/admin/Classwork/material.classwork";
+import Checkbox from "../components/admin/Classwork/checkbox.classwork";
+import ShortAnswer from "../components/admin/Classwork/short-asnwer.classwork";
+import LongAnswer from "../components/admin/Classwork/long-answer.classwork";
+import JoinClass from "../components/admin/Class/join_class.component";
+import People from "../components/admin/Class/people.component";
+import ClassSetting from "../components/admin/Class/setting.component";
+import ArchivedComponent from "../components/admin/Class/archived.component";
+import Profile from "../components/admin/Profile/profile.component";
+import EditProfile from "../components/admin/Profile/edit_profile.component";
 
 
 const AppRoutes = () => {
@@ -34,9 +43,19 @@ const AppRoutes = () => {
                             <Sidebar/>
                             <Switch>
                                 <Route path="/teacherAdmin" render={(props) => <Dashboard/>} exact/>;
-                                <Route path="/teacherAdmin/module" render={(props) => <Module/>} exact/>;
-                                <Route path="/teacherAdmin/assignment" render={(props) => <Assignment/>} exact/>;
-                                <Route path="/teacherAdmin/timeTable" render={(props) => <TimeTable/>} exact/>;
+                                <Route path="/teacherAdmin/people/" render={(props) => <People/>}/>
+                                <Route path="/teacherAdmin/class/" render={(props) => <ClassPage/>} exact/>;
+                                <Route path="/teacherAdmin/classwork/" render={(props) => <ClassWork/>} exact/>;
+                                <Route path="/teacherAdmin/m/" render={(props) => <Material/>} exact/>
+                                <Route path="/teacherAdmin/mc/" render={(props) => <Material/>} exact/>
+                                <Route path="/teacherAdmin/c/" render={(props) => <Checkbox/>} exact/>
+                                <Route path="/teacherAdmin/sa/" render={(props) => <ShortAnswer/>} exact/>
+                                <Route path="/teacherAdmin/la/" render={(props) => <LongAnswer/>} exact/>
+                                <Route path="/teacherAdmin/join/" render={(props) => <JoinClass/>} exact/>
+                                <Route path="/teacherAdmin/setting/" render={(props) => <ClassSetting/>} exact/>
+                                <Route path="/teacherAdmin/archived/" render={(props) => <ArchivedComponent/>} exact/>
+                                <Route path="/teacherAdmin/profile/" render={(props) => <Profile/>} exact/>
+                                <Route path="/teacherAdmin/UserProfile/edit" render={(props) => <EditProfile/>} exact/>
                             </Switch>
                         </AdminLayout>
                     </Route>
@@ -46,7 +65,7 @@ const AppRoutes = () => {
                             <StudentHeader/>
                             <StudentSidebar/>
                             <Switch>
-                                    <Route path="/studentAdmin" render={(props) => <Dashboard/>} exact/>;
+                                <Route path="/studentAdmin" render={(props) => <Dashboard/>} exact/>;
                             </Switch>
                         </AdminLayout>
                     </Route>
