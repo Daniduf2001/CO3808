@@ -4,9 +4,11 @@
     color: #ffffff;
     top: 0;
     bottom: 0;
+    padding-top: 0.5rem !important;
 }
 
 .signUpDiv .signUpMainDiv {
+    width: 45vw;
     border-radius: 20px;
     background-color: #464D75;
 }

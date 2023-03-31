@@ -4,7 +4,7 @@ function ResetPassword() {
     return (
         <div>
             <div className="container-fluid px-5 pt-5 resetDiv">
-                <div className="row">
+                <div>
                     <div className="col-lg-6">
                         <div className="col-12 mb-3">
                             <h4 className="fw-bold"> LearnNow</h4>

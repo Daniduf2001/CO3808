@@ -60,7 +60,7 @@ function Login() {
 
 
     return (
-        <div className="row text-white px-0 m-0 loginDiv">
+        <div className="text-white px-0 m-0 loginDiv">
             <div className="col-lg-6">
                 <div className="col-lg-12 mt-5 ps-5 pt-3">
                     <h4 className="fw-bold">LearnNow</h4>
@@ -93,7 +93,7 @@ function Login() {
                 </div>
             </div>
             <div className="col-lg-6">
-                <div className="d-flex flex-column justify-content-center align-items-center signInSDiv">
+                <div className="mt-5 d-flex flex-column justify-content-center align-items-center signInSDiv">
                     <div className="text-center mb-2 pt-4">
                         <h1>Sign In</h1>
                     </div>

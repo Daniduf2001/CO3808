@@ -51,7 +51,7 @@ function Signup() {
     return (
         <div>
             <div className="container-fluid px-5 pt-5 signUpDiv">
-                <div className="row">
+                <div>
                     <div className="col-lg-6">
                         <div className="col-12 mb-3">
                             <h4 className="fw-bold"> LearnNow</h4>
@@ -73,7 +73,7 @@ function Signup() {
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <div className="row mt-3">
+                        <div className="row">
                             <div className="col-12 col-lg-12 col-md-12 col-sm-12">
                                 <div className="row signContentDiv pb-5">
                                     <div className="col-12 col-sm-12 col-md-6 col-lg-9">
