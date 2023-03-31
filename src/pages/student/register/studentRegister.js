@@ -70,19 +70,19 @@ const StudentRegister = () => {
 
     return (
         <div className="h-100 container-fluid studentFormDiv">
-            <div className="row h-100">
-                <div className="col-lg-12 col-sm-12 col-md-12 col-12 d-flex justify-content-start align-items-center">
+            <div className="h-100">
+                <div className="col-lg-12 col-sm-12 col-md-12 d-flex justify-content-start align-items-center">
                     <div className="circleDiv"/>
                     <div className="circleDiv"/>
                     <div className="circleDiv"/>
                     <h4 className="m-0 ms-4 fw-bold text-white">LearnNow</h4>
                 </div>
-                <div className="row p-0 m-0">
+                <div className="p-0 m-0">
                     <div
-                        className="col-lg-6 col-sm-12 col-md-12 col-12  p-0 m-0 d-flex flex-column justify-content-center align-items-center">
+                        className="col-lg-6 col-sm-12 col-md-12 p-0 m-0 d-flex flex-column justify-content-center align-items-center">
                         <img src={studentImg} alt="studentImg"/>
                     </div>
-                    <div className="col-lg-6 col-sm-12 col-md-12 col-12 ">
+                    <div className="col-lg-6 col-sm-12 col-md-12">
                         <div className="col-lg-8 text-white">
                             <h2 className="fw-bold text-center">Student Registration</h2>
                             <h5 className="text-center mb-3">Fill in your student details below</h5>

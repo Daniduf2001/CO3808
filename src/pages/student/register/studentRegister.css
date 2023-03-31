@@ -7,6 +7,10 @@
     background-color: #182052;
 }
 
+[class*="col-"] {
+    float: none;
+}
+
 .studentFormDiv .circleDiv {
     width: 10px;
     height: 10px;
