@@ -1,0 +1,14 @@
+.welcomeDiv {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: #182052;
+    color: #ffffff;
+    height: 100vh;
+}
+.avtarSqDiv{
+    width: 170px;
+    height: 180px;
+    background-color: #6A7090;
+    border-radius: 30px;
+}

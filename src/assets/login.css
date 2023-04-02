@@ -1,52 +1,55 @@
-.resetDiv {
+.loginDiv {
     position: absolute;
     background-color: #182052;
     color: #ffffff;
     top: 0;
     bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
-.resetDiv .resetDivMainDiv {
-    border-radius: 20px;
+.loginDiv .signInSDiv {
+    width: 60%;
+    height: 80%;
+    border-radius: 30px;
     background-color: #464D75;
+    position: relative;
+    top: 10%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
-.resetDiv input[type="email"] {
+.loginDiv input[type="email"] {
     border-radius: 20px;
 }
 
-.resetDiv input[type="password"] {
+.loginDiv input[type="password"] {
     border-radius: 20px;
 }
 
-.resetDiv input[type="date"] {
-    border-radius: 20px;
-}
-
-.resetDiv input[type="text"] {
-    border-radius: 20px;
-}
-
-.resetDiv .btnSend {
+.loginDiv .btnLogin {
     background-color: orangered;
     border-radius: 20px;
 }
 
-.resetDiv .btnGoogle {
+.loginDiv .btnGoogle {
     width: 50px;
     height: 50px;
     background-color: #ffffff;
     border-radius: 100%;
 }
 
-.resetDiv .lineBrake {
+.loginDiv .lineBrake {
     width: 50px;
     height: 5px;
     border-radius: 20px;
     background-color: #ffffff;
 }
 
-.resetDiv label {
+.loginDiv label {
     text-transform: capitalize;
     font-weight: bold;
 }

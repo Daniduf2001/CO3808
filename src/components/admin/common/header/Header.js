@@ -1,53 +1,29 @@
-import React, {useEffect, useState} from "react";
-import Cookies from "universal-cookie";
+import React, {useEffect, useState} from 'react';
 import './header.css';
 // import logo from '../../../../assets/logo/logo.svg';
-import {Link, useHistory, useLocation} from "react-router-dom";
-import UserInfo from "../../../../helpers/UserInfo";
-import Axios from "axios";
-import InfoById from "../../../../helpers/InfoById";
+import {Link} from "react-router-dom";
+import Cookies from "universal-cookie";
+import UserInfo from "../../../../Library/UserInfo";
 
 const Header = () => {
-
-    let location = useLocation();
-    const navigate = useHistory();
-
-    const [ClassInfo, setClassInfo] = useState({});
-    const [userInfo, setUserInfo] = useState(null);
-    const [classworks, setClassworks] = useState([]);
-    const [authorInfo, setAuthorInfo] = useState({});
+    const [userInfo, setUserInfo] = useState('');
+    const [profile, setProfile] = useState(null);
+    const [info, setInfo] = useState('');
 
     useEffect(() => {
         const token = new Cookies().get('token');
-        UserInfo(token).then(result => {
-            if (result) setUserInfo(result); else window.location = "/login"
+        UserInfo(token).then((res) => {
+            if (res) setUserInfo(res); else window.location = "/"
         })
+
+        console.log(userInfo)
     }, [])
 
     useEffect(() => {
-        Axios.get(`${URL}/class/get/class/${ClassInfo._id}`)
-            .then(res => setClassInfo(() => res.data))
-    }, [ClassInfo._id])
-
-    useEffect(() => {
-        Axios.get(`${URL}/classwork/class/get/${ClassInfo._id}`)
-            .then(res => setClassworks(res.data))
-    }, [ClassInfo._id])
-
-    useEffect(() => {
-        if (classworks.length > 0) {
-            classworks.forEach(classwork => {
-                InfoById(classwork.author)
-                    .then(result => setAuthorInfo(prev => ({...prev, [classwork.author]: result})))
-            })
+        if (userInfo) {
+            if (userInfo.profile_picture) setProfile(`${URL}/${userInfo.profile_picture.filename}`)
         }
-    }, [classworks])
-
-    const logout = () => {
-        const token = new Cookies()
-        token.remove('token');
-        window.location = "/";
-    }
+    }, [userInfo])
 
     return (
         <div className="top_navbar">
@@ -57,21 +33,20 @@ const Header = () => {
                 <div className="three"/>
             </div>
             <div className="col-12 top_menu">
-                <div className="col-7  d-flex justify-content-end">
-                    <span className="nav-right nav-ham" onClick={() => {
-                        navigate.push(`/teacherAdmin/join/`, {state: {classID: ClassInfo._id}})
-                        window.location = "/teacherAdmin/join/"
-                    }}>+</span>
+                <div className="col-6 d-flex justify-content-end">
+                    <h1 className="fw-bold">Learn</h1>
                 </div>
                 <div className="col-5 d-flex justify-content-end">
-                    <ul className="mb-0">
+                    <ul className="mb-0 profileDIv">
                         <li className="mt-1 text-decoration-none">
-                            <p style={{cursor: "pointer"}} className="d-inline me-2" onClick={logout}><i
+                            <a className="d-inline me-2 text-dark" style={{background: 'none'}} href="logout"><i
                                 className="fa fa-sign-out logoutIcon"
-                                aria-hidden="true"/></p>
+                                aria-hidden="true"/>
+                            </a>
+                            <p className="d-inline ms-2 me-2 fw-bold profileText">{userInfo.name}</p>
                         </li>
                         <li>
-                            <Link to="/teacherAdmin/profile/">
+                            <Link to="/adminTeacher/profile">
                                 <i className="fas fa-user"/>
                             </Link>
                         </li>

@@ -79,3 +79,7 @@
 .wrapper .top_navbar .top_menu ul li a:hover i {
     color: #fff;
 }
+
+.profileDIv > li {
+    list-style: none;
+}

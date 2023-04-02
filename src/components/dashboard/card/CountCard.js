@@ -1,9 +1,9 @@
 import React from "react";
-import './countcard.css';
+import './countCard.css';
 
 const CountCard = (props) => {
     return (
-        <div className="card col-2 countCard">
+        <div className="card box-shadow col-2 countCard">
             <div className="card-body d-flex justify-content-center align-items-center">
                 <div className="col-6">
                     <i className={`count-Icon ${props.icon}`}></i>
