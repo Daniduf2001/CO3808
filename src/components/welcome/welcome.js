@@ -33,10 +33,9 @@ function Welcome() {
                         <h4> Student</h4>
                     </div>
 
-                    <p className="mt-5">Student: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-                        accusantium ad aut dolor explicabo,
-                        illum ipsa ipsam laudantium maxime modi nemo nisi non obcaecati perferendis possimus quasi,
-                        quibusdam reprehenderit vitae.</p>
+                    <p className="mt-5">Student: This user type will allow you access to multiple features such as
+                        managing your modules and assignments, being able to keep track of deadlines, google calendar
+                        and classroom. </p>
 
                     <p className="mt-3">Teacher:Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium
                         ad aut dolor explicabo,

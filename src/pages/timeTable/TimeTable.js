@@ -1,72 +1,70 @@
 import React, {useEffect, useState} from 'react';
-import {GoogleLogin} from "react-google-login";
-import Axios from "axios";
+import Axios from 'axios';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import FullCalendar from '@fullcalendar/react';
 
-const client_id = "561451932929-76r1j1chglg5opgdpjql5u9eofn2h2mt.apps.googleusercontent.com";
+const client_id =
+    '561451932929-76r1j1chglg5opgdpjql5u9eofn2h2mt.apps.googleusercontent.com';
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 
 function TimeTable(props) {
 
-    // useEffect(() => {
-    //     Axios.get(`${URL}/calendar/google`).then((response) => {
-    //         console.log(response);
-    //     })
-    //
-    // }, []);
-
-    // console.log(client_id);
+    useEffect(() => {
+        Axios.get(`${URL}/calendar/event/all`).then((response) => {
+            setEventDetails(response.data);
+        });
+        // setEventDetailsToCalender();
+    }, []);
 
     const [summary, setSummary] = useState('');
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
     const [startDateTime, setStartDateTime] = useState('');
     const [endDateTime, setEndDateTime] = useState('');
+    const [eventDetails, setEventDetails] = useState([]);
 
-    const responseGoogle = (response) => {
-        const {code} = response;
-        console.log(code);
-        Axios.post(`${URL}/users/create-tokens/`, {code}).then((response) => {
-            console.log(response)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
+    const events = [
+        {title: "Programming", start: new Date("2023-04-04T21:00:00+05:30")},
+        {title: "Distributed system", start: new Date("2023-04-25T21:00:00+05:30")},
+        {title: "Programming", start: new Date("2023-04-04T21:00:00+05:30")},
+        {title: "Distributed system", start: new Date("2023-05-12T21:30:00+05:30")},
+        {title: "Programming", start: new Date("2023-05-11T21:30:00+05:30")},
+    ];
 
-    const responseError = (response) => {
-        console.log(response)
-    };
+    // const setEventDetailsToCalender = () => {
+    //     eventDetails.map((event) => {
+    //         events.push({title: event.summary, start: event.start.dateTime});
+    //     });
+    // };
 
-    const createAssignment = (e) => {
-        e.preventDefault();
-        Axios.post(`${URL}/users/create/event`, {
-            summary,
-            description,
-            location,
-            startDateTime,
-            endDateTime
-        }).then((res) => {
-            console.log(res)
-        })
-    }
 
     return (
         <div className="container main_container">
             <div className="item">
-                <h1>Google Calendar API</h1>
+                <h1 className="text-center">Assignment Schedule</h1>
             </div>
-            <div>
-                <GoogleLogin clientId={client_id} buttonText="Sign in & Authorize Calendar"
-                             onSuccess={responseGoogle}
-                             onFailure={responseError}
-                             cookiePolicy={'single_host_origin'}
-                             responseType="code"
-                             accessType="offline"
-                             scope="openid email profile https://www.googleapis.com/auth/calendar"
+            <div className="container ms-2">
+                <FullCalendar
+                    plugins={[dayGridPlugin]}
+                    initialView="dayGridMonth"
+                    weekends={true}
+                    events={events}
+                    eventContent={renderEventContent}
                 />
             </div>
         </div>
     );
+
+    // a custom render function
+    function renderEventContent(eventInfo) {
+        return (
+            <div className="col text-center">
+                <p className="fw-bold">{eventInfo.event.title}</p>
+                <p>{eventInfo.timeText}</p>
+            </div>
+        );
+    }
 }
 
 export default TimeTable;

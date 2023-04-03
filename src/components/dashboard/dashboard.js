@@ -4,6 +4,7 @@ import CountCard from "./card/CountCard";
 import Axios from "axios";
 import Cookies from "universal-cookie";
 import UserInfo from "../../Library/UserInfo";
+import TimeTable from "../../pages/timeTable/TimeTable";
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 const Dashboard = () => {
@@ -83,6 +84,9 @@ const Dashboard = () => {
             <div className="item">
                 <div className="d-flex justify-content-between align-items-center mb-3 mt-3">
                     <div className="col-lg-6 me-2">
+                        <div className="card card-body dashboardCalendar">
+                            <TimeTable/>
+                        </div>
                         <div className="card card-body">
                             <div className="table-responsive">
                                 <h1 className="text-center">Class Details</h1>

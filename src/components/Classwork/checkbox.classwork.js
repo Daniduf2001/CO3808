@@ -124,113 +124,121 @@ const Checkbox = (params) => {
     const closeAnswer = () => answerModal.style.display = "none";
 
     return (
-        <div className="container-fluid" style={{padding: "0"}}>
-            <ClassNavbar classInfo={classInfo}/>
-            <div className="container margin-top-bottom">
-                <div className="col-9">
-                    <h1 className="box-title">{classwork.title}</h1>
-                    {classwork.duedate ? <p>Due: {moment(classwork.duedate).fromNow()}</p> : null}
-                    <p className="box-text material-description">{classwork.description}</p>
-                    <p>posted {moment(classwork.createdAt).fromNow()}
-                        {classwork.createdAt !== classwork.updatedAt ?
-                            <span>(updated {moment(classwork.updatedAt).fromNow()})</span> : null} by {author}</p>
-                    {classwork.author === userInfo._id ?
-                        <div><h3><span className="link" onClick={openClasswork}>Edit</span></h3>
-                            <h3><span className="link text-danger" onClick={deleteClasswork}>Delete</span></h3>
-                        </div> : null}
-                </div>
-                {classInfo.teacher && !(classInfo.teacher.includes(userInfo._id) || classInfo.owner === userInfo._id) ?
-                    <div className="col-3">
-                        {!answered ?
-                            <form className="box box-shadow" onSubmit={Answer}>
-                                <h1 className="box-title">Answer:</h1>
-                                <div>
-                                    {classwork.options && classwork.options.map(option => (
-                                        <div className="form-group" key={option}>
-                                            <input type="checkbox" className="form-control" id={option} name="answer"
-                                                   value={option}
-                                                   onChange={({target: {checked, value}}) => {
-                                                       if (checked) setInputAnswer(prev => [...prev, value]);
-                                                       else setInputAnswer(inputAnswer.filter(answer => answer !== value))
-                                                   }}/>
-                                            <label htmlFor={option}>{option}</label>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="form-group">
-                                    <input className="btn btn-dark-blue form-control" type="submit"/>
-                                </div>
-                            </form> :
-                            <div className="box box-shadow">
-                                <p>You have submitted.</p>
-                            </div>}
-                    </div> :
-                    <div className="col-3">
-                        <div className="box box-shadow">
-                            <h1 className="box-title">Answers:</h1>
-                            <p className="box-text">{classwork.answer ? classwork.answer.length : null} answered</p>
-                            <button className="form-control btn btn-dark-blue" onClick={showAnswer}>See answers</button>
+        <div className="container main_container">
+            <div className="item">
+                <div className="container-fluid" style={{paddingLeft: "95px"}}>
+                    <ClassNavbar classInfo={classInfo}/>
+                    <div className="container margin-top-bottom" style={{marginTop: '100px'}}>
+                        <div className="col-9">
+                            <h1 className="box-title">{classwork.title}</h1>
+                            {classwork.duedate ? <p>Due: {moment(classwork.duedate).fromNow()}</p> : null}
+                            <p className="box-text material-description">{classwork.description}</p>
+                            <p>posted {moment(classwork.createdAt).fromNow()}
+                                {classwork.createdAt !== classwork.updatedAt ?
+                                    <span>(updated {moment(classwork.updatedAt).fromNow()})</span> : null} by {author}</p>
+                            {classwork.author === userInfo._id ?
+                                <div><h3><span className="link" onClick={openClasswork}>Edit</span></h3>
+                                    <h3><span className="link text-danger" onClick={deleteClasswork}>Delete</span></h3>
+                                </div> : null}
                         </div>
-                    </div>}
-            </div>
-            {classwork.author === userInfo._id ?
-                <div className="classwork-modal" id="classwork">
-                    <div className="classwork-content container">
-                        <span className="classwork-close" onClick={closeClasswork}>&times;</span>
-                        <h1 className="box-title">Update classwork</h1>
-                        <form onSubmit={updateClasswork}>
-                            <div className="form-group">
-                                <p className="form-label">Title:</p>
-                                <input type="text" className="form-control" value={inputTitle}
-                                       onChange={({target: {value}}) => setInputTitle(value)} required/>
-                            </div>
-                            <div className="form-group">
-                                <p className="form-label">Description: (optional)</p>
-                                <textarea rows="5" type="text" className="form-control" value={inputDescription}
-                                          onChange={({target: {value}}) => setInputDescription(value)}/>
-                            </div>
-                            <div className="form-group">
-                                <p className="form-label">Due date (optional):</p>
-                                <input type="datetime-local" className="form-control" value={inputDeadline}
-                                       onChange={({target: {value}}) => setInputDeadline(value)}
-                                       min={new Date().toJSON().substr(0, 16)}/>
-                            </div>
-                            <div className="form-group">
-                                <p className="form-label">Options:</p>
-                                <ul>
-                                    {inputChoices.map(option => {
-                                        return <li key={option}>{option} (<span className="link"
-                                                                                onClick={() => setInputChoices(inputChoices.filter(options => options !== option))}>Delete</span>)
-                                        </li>
-                                    })}
-                                </ul>
-                                <div className="box">
-                                    <p className="form-label">Input new option:</p>
-                                    <input type="text" className="form-control" value={inputNewChoices}
-                                           onChange={({target: {value}}) => setInputNewChoices(value)}
-                                           onKeyPress={event => event.key === "Enter" ? addNewChoice(event) : null}/>
+                        {classInfo.teacher && !(classInfo.teacher.includes(userInfo._id) || classInfo.owner === userInfo._id) ?
+                            <div className="col-3">
+                                {!answered ?
+                                    <form className="box box-shadow" onSubmit={Answer}>
+                                        <h1 className="box-title">Answer:</h1>
+                                        <div>
+                                            {classwork.options && classwork.options.map(option => (
+                                                <div className="form-group" key={option}>
+                                                    <input type="checkbox" className="form-control" id={option}
+                                                           name="answer"
+                                                           value={option}
+                                                           onChange={({target: {checked, value}}) => {
+                                                               if (checked) setInputAnswer(prev => [...prev, value]);
+                                                               else setInputAnswer(inputAnswer.filter(answer => answer !== value))
+                                                           }}/>
+                                                    <label htmlFor={option}>{option}</label>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="form-group">
+                                            <input className="btn btn-dark-blue form-control" type="submit"/>
+                                        </div>
+                                    </form> :
+                                    <div className="box box-shadow">
+                                        <p>You have submitted.</p>
+                                    </div>}
+                            </div> :
+                            <div className="col-3">
+                                <div className="box box-shadow">
+                                    <h1 className="box-title">Answers:</h1>
+                                    <p className="box-text">{classwork.answer ? classwork.answer.length : null} answered</p>
+                                    <button className="form-control btn btn-dark-blue" onClick={showAnswer}>See
+                                        answers
+                                    </button>
                                 </div>
-                            </div>
-                            <div className="form-group">
-                                <input type="submit" className="form-control btn btn-dark-blue"/>
-                            </div>
-                        </form>
+                            </div>}
                     </div>
-                </div> : null}
-            {classInfo.teacher && classwork.author && (classwork.author === userInfo._id || classInfo.teacher.includes(userInfo._id) || classInfo.owner === userInfo._id) ?
-                <div className="classwork-modal" id="answers">
-                    <div className="classwork-content container">
-                        <span className="classwork-close" onClick={closeAnswer}>&times;</span>
-                        <h1 className="box-title">Answers by students:</h1>
-                        {answers.map(answer => {
-                            return <p
-                                key={answer._id}>{answer.student.username} answered <b>{answer.answer.join(', ')}</b> {moment(answer.answeredOn).fromNow()}
-                                {answer.answeredOn > classwork.duedate ? <span><b> (Turned in late)</b></span> : null}
-                            </p>
-                        })}
-                    </div>
+                    {classwork.author === userInfo._id ?
+                        <div className="classwork-modal" id="classwork">
+                            <div className="classwork-content container">
+                                <span className="classwork-close" onClick={closeClasswork}>&times;</span>
+                                <h1 className="box-title">Update classwork</h1>
+                                <form onSubmit={updateClasswork}>
+                                    <div className="form-group">
+                                        <p className="form-label">Title:</p>
+                                        <input type="text" className="form-control" value={inputTitle}
+                                               onChange={({target: {value}}) => setInputTitle(value)} required/>
+                                    </div>
+                                    <div className="form-group">
+                                        <p className="form-label">Description: (optional)</p>
+                                        <textarea rows="5" type="text" className="form-control" value={inputDescription}
+                                                  onChange={({target: {value}}) => setInputDescription(value)}/>
+                                    </div>
+                                    <div className="form-group">
+                                        <p className="form-label">Due date (optional):</p>
+                                        <input type="datetime-local" className="form-control" value={inputDeadline}
+                                               onChange={({target: {value}}) => setInputDeadline(value)}
+                                               min={new Date().toJSON().substr(0, 16)}/>
+                                    </div>
+                                    <div className="form-group">
+                                        <p className="form-label">Options:</p>
+                                        <ul>
+                                            {inputChoices.map(option => {
+                                                return <li key={option}>{option} (<span className="link"
+                                                                                        onClick={() => setInputChoices(inputChoices.filter(options => options !== option))}>Delete</span>)
+                                                </li>
+                                            })}
+                                        </ul>
+                                        <div className="box">
+                                            <p className="form-label">Input new option:</p>
+                                            <input type="text" className="form-control" value={inputNewChoices}
+                                                   onChange={({target: {value}}) => setInputNewChoices(value)}
+                                                   onKeyPress={event => event.key === "Enter" ? addNewChoice(event) : null}/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <input type="submit" className="form-control btn btn-dark-blue"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div> : null}
+                    {classInfo.teacher && classwork.author && (classwork.author === userInfo._id || classInfo.teacher.includes(userInfo._id) || classInfo.owner === userInfo._id) ?
+                        <div className="classwork-modal" id="answers">
+                            <div className="classwork-content container">
+                                <span className="classwork-close" onClick={closeAnswer}>&times;</span>
+                                <h1 className="box-title">Answers by students:</h1>
+                                {answers.map(answer => {
+                                    return <p
+                                        key={answer._id}>{answer.student.username} answered <b>{answer.answer.join(', ')}</b> {moment(answer.answeredOn).fromNow()}
+                                        {answer.answeredOn > classwork.duedate ?
+                                            <span><b> (Turned in late)</b></span> : null}
+                                    </p>
+                                })}
+                            </div>
+                        </div>
+                        : null}
                 </div>
-                : null}
+            </div>
         </div>
     )
 }

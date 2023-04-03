@@ -33,12 +33,12 @@ const Header = () => {
             </div>
             <div className="col-12 top_menu">
                 <div className="col-6 d-flex justify-content-end">
-                    <h1 className="fw-bold">Learn</h1>
+                    <h1 className="fw-bold">LearnNow</h1>
                 </div>
                 <div className="col-5 d-flex justify-content-end">
                     <ul className="mb-0 profileDIv">
                         <li className="mt-1 text-decoration-none">
-                            <a className="d-inline me-2 text-dark" style={{background: 'none'}} href="logout"><i
+                            <a className="d-inline me-2 text-dark" style={{background: 'none'}} href="/logout"><i
                                 className="fa fa-sign-out logoutIcon"
                                 aria-hidden="true"/>
                             </a>

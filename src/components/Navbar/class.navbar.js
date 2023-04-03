@@ -70,7 +70,7 @@ const ClassNavbar = ({classInfo}) => {
                             <span className="icon"><i className="fa-solid fa-pen-to-square"></i></span>
                             <span className="title">Assignment</span>
                         </Link></li>
-                        <li><Link to="/admin/ride">
+                        <li><Link to="/adminTeacher/timeTable">
                             <span className="icon"><i className="fa-solid fa-calendar-days"></i></span>
                             <span className="title">Class time table</span>
                         </Link></li>
@@ -86,7 +86,7 @@ const ClassNavbar = ({classInfo}) => {
                     </div>
                     <div className="col-12 top_menu">
                         <div className="col-6 d-flex justify-content-center">
-                            <h1 className="fw-bold">Learn</h1>
+                            <h1 className="fw-bold">LearnNow</h1>
                         </div>
                         <div className="col-6 d-flex justify-content-center align-items-center">
                             {Object.keys(classInfo).length > 0 && classInfo.owner === userInfo._id ?

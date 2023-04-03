@@ -84,9 +84,9 @@ const Login = () => {
                         </div>
                         <div className="form-group">
                             <p className="form-label">
-                                Don't have account yet?{' '}
-                                <NavLink to="/register" className="text-light">
-                                    Register
+                                Forgot Password  {' '}
+                                <NavLink to="/reset" className="text-light">
+                                    Reset
                                 </NavLink>
                             </p>
                         </div>

@@ -74,40 +74,44 @@ const Material = (params) => {
     }
 
     return (
-        <div className="container-fluid" style={{padding: "0"}}>
-            <ClassNavbar classInfo={classInfo}/>
-            <div className="container">
-                <div className="margin-top-bottom box box-shadow">
-                    <h1 className="box-title">{material.title}</h1>
-                    <p className="box-text material-description">{material.description}</p>
-                    <p>posted {moment(material.createdAt).fromNow()}
-                        {material.createdAt !== material.updatedAt ?
-                            <span>(updated {moment(material.updatedAt).fromNow()})</span> : null} by {author}</p>
-                    {material.author === userInfo._id ?
-                        <div><h3><span className="link" onClick={openMaterial}>Update</span></h3>
-                            <h3><span className="link text-danger" onClick={deleteMaterial}>Delete</span></h3>
-                        </div> : null}
-                </div>
-            </div>
-            <div className="classwork-modal" id="classwork">
-                <div className="classwork-content container">
-                    <span className="classwork-close" onClick={closeClasswork}>&times;</span>
-                    <h1 className="box-title">Update classwork</h1>
-                    <form onSubmit={updateClasswork}>
-                        <div className="form-group">
-                            <p className="form-label">Title:</p>
-                            <input type="text" className="form-control" value={inputTitle}
-                                   onChange={({target: {value}}) => setInputTitle(value)} required/>
+        <div className="container main_container">
+            <div className="item">
+                <div className="container-fluid" style={{paddingLeft: "95px"}}>
+                    <ClassNavbar classInfo={classInfo}/>
+                    <div className="container margin-top-bottom" style={{marginTop: '100px'}}>
+                        <div className="margin-top-bottom box box-shadow">
+                            <h1 className="box-title">{material.title}</h1>
+                            <p className="box-text material-description">{material.description}</p>
+                            <p>posted {moment(material.createdAt).fromNow()}
+                                {material.createdAt !== material.updatedAt ?
+                                    <span>(updated {moment(material.updatedAt).fromNow()})</span> : null} by {author}</p>
+                            {material.author === userInfo._id ?
+                                <div><h3><span className="link" onClick={openMaterial}>Update</span></h3>
+                                    <h3><span className="link text-danger" onClick={deleteMaterial}>Delete</span></h3>
+                                </div> : null}
                         </div>
-                        <div className="form-group">
-                            <p className="form-label">Description:</p>
-                            <textarea rows="5" type="text" className="form-control" value={inputDescription}
-                                      onChange={({target: {value}}) => setInputDescription(value)} required/>
+                    </div>
+                    <div className="classwork-modal" id="classwork">
+                        <div className="classwork-content container">
+                            <span className="classwork-close" onClick={closeClasswork}>&times;</span>
+                            <h1 className="box-title">Update classwork</h1>
+                            <form onSubmit={updateClasswork}>
+                                <div className="form-group">
+                                    <p className="form-label">Title:</p>
+                                    <input type="text" className="form-control" value={inputTitle}
+                                           onChange={({target: {value}}) => setInputTitle(value)} required/>
+                                </div>
+                                <div className="form-group">
+                                    <p className="form-label">Description:</p>
+                                    <textarea rows="5" type="text" className="form-control" value={inputDescription}
+                                              onChange={({target: {value}}) => setInputDescription(value)} required/>
+                                </div>
+                                <div className="form-group">
+                                    <input type="submit" className="form-control btn btn-dark-blue"/>
+                                </div>
+                            </form>
                         </div>
-                        <div className="form-group">
-                            <input type="submit" className="form-control btn btn-dark-blue"/>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

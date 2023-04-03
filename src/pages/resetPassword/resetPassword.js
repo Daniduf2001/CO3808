@@ -4,7 +4,7 @@ function ResetPassword() {
     return (
         <div>
             <div className="container-fluid px-5 pt-5 resetDiv">
-                <div className="row">
+                <div>
                     <div className="col-lg-6">
                         <div className="col-12 mb-3">
                             <h4 className="fw-bold"> LearnNow</h4>
@@ -27,10 +27,10 @@ function ResetPassword() {
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <div className="row mt-3">
-                            <div className="col-12 col-lg-12 col-md-12 col-sm-12">
-                                <div className="row pb-5">
-                                    <div className="col-12 col-sm-12 col-md-6 col-lg-9">
+                        <div className="mt-3">
+                            <div className="col-lg-12 col-md-12 col-sm-12">
+                                <div className="pb-5">
+                                    <div className="col-sm-12 col-md-6 col-lg-9">
                                         <div className="resetDivMainDiv col-lg-12 m-auto">
                                             <div className="text-center mb-2 pt-4">
                                                 <h1 className="fw-bold">Reset Password</h1>

@@ -39,18 +39,16 @@ function Welcome() {
                         <div className="col-4 avtarSqDiv mb-4">
                             <img src={teacherImage} alt="teacher icon"/>
                         </div>
-                        <h4> teacher</h4>
+                        <h4>Teacher</h4>
                     </Link>
 
-                    <p className="mt-5">Student: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-                        accusantium ad aut dolor explicabo,
-                        illum ipsa ipsam laudantium maxime modi nemo nisi non obcaecati perferendis possimus quasi,
-                        quibusdam reprehenderit vitae.</p>
+                    <p className="mt-5">Student: This user type will allow you access to multiple features such as
+                        managing your modules and assignments, being able to keep track of deadlines, google calendar
+                        and classroom. </p>
 
-                    <p className="mt-3">Teacher:Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium
-                        ad aut dolor explicabo,
-                        illum ipsa ipsam laudantium maxime modi nemo nisi non obcaecati perferendis possimus quasi,
-                        quibusdam reprehenderit vitae.</p>
+                    <p className="mt-3">Teacher: This user type will enable you to save and drop information that
+                        students can access for further knowledge, keep track of their ongoing classes, google
+                        calendar.</p>
                 </div>
 
             </div>

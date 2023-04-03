@@ -28,6 +28,7 @@ import AdminLayout from "./layout/adminLayout";
 import Header from "./components/admin/common/header/Header";
 import Sidebar from "./components/admin/common/sidebar/Sidebar";
 import TimeTable from "./pages/timeTable/TimeTable";
+import ResetPassword from "./pages/resetPassword/resetPassword";
 
 const App = () => (
     <Router>
@@ -35,6 +36,7 @@ const App = () => (
             <Route exact path="/" component={Home}/>
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
+            <Route path="/reset" component={ResetPassword}/>
             <Route path="/teacher" component={TeacherRegister}/>
             <Route path="/student" component={StudentRegister}/>
             <Route path="/welcome" component={Welcome}/>

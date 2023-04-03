@@ -68,7 +68,7 @@ const Home = () => {
                     if (!_class.archived && !userInfo.archived_class.includes(_class._id)) {
                         return <div className="class box box-shadow" key={_class._id}>
                             <div onClick={() => window.location = `/class/${_class._id}`}>
-                                <h1 className="box-title">{_class.title}</h1>
+                                <h3 className="box-title">{_class.title}</h3>
                                 <p className="box-text class-description">{_class.description}</p>
                             </div>
                             <p className="box-option link text-center"
