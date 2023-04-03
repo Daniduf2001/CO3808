@@ -27,6 +27,7 @@ import Dashboard from "./components/dashboard/dashboard";
 import AdminLayout from "./layout/adminLayout";
 import Header from "./components/admin/common/header/Header";
 import Sidebar from "./components/admin/common/sidebar/Sidebar";
+import TimeTable from "./pages/timeTable/TimeTable";
 
 const App = () => (
     <Router>
@@ -58,6 +59,7 @@ const App = () => (
                     <Switch>
                         <Route path="/adminTeacher" render={(props) => <Dashboard/>} exact/>;
                         <Route path="/adminTeacher/profile" render={(props) => <Profile userType={true}/>} exact/>
+                        <Route path="/adminTeacher/timeTable" render={(props) => <TimeTable/>} exact/>
                         {/*<Route path="/adminTeacher" component={Dashboard} exact/>;*/}
                         {/*<Route path="/admin/package" render={(props) => <Package/>}/>;*/}
                         {/*<Route path="/admin/client" render={(props) => <Client/>}/>;*/}

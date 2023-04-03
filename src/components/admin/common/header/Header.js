@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import './header.css';
-// import logo from '../../../../assets/logo/logo.svg';
 import {Link} from "react-router-dom";
 import Cookies from "universal-cookie";
 import UserInfo from "../../../../Library/UserInfo";
@@ -52,7 +51,6 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
     );
